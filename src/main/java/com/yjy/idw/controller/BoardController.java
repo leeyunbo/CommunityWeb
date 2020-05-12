@@ -32,7 +32,7 @@ public class BoardController {
 	
 	@RequestMapping("/")
 	public String getHomepage() {
-		return "index";
+		return "index.jsp";
 	}
 	
 	@RequestMapping("/deleteBoard.do")
@@ -43,17 +43,8 @@ public class BoardController {
 	  
 	@RequestMapping("/getBoard.do")
 	public String getBoard(BoardVO vo, Model model) {
-		MultipartFile uploadFile = vo.getUploadFile(); 
-		if(!uploadFile.isEmpty()) {
-			String fileName = uploadFile.getOriginalFilename(); 
-			vo.setUploadFileName(fileName);
-		}
-		else {
-			vo.setUploadFileName("파일 없음");
-		}
-		
 		model.addAttribute("board", boardService.getBoard(vo));
-		return "getBoard";
+		return "getBoard.jsp";
 	}
 	
 	// @RequestParam(value="searchCondition", defaultValue="TITLE",required=false) String condition
@@ -64,18 +55,11 @@ public class BoardController {
 		if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
 		
 		model.addAttribute("boardList", boardService.getBoardList(vo));
-		return "getBoardList";
+		return "getBoardList.jsp";
 	}
 	
 	@RequestMapping(value="/insertBoard.do")
 	public String insertBoard(BoardVO vo) throws IOException {
-		MultipartFile uploadFile = vo.getUploadFile(); 
-		if(!uploadFile.isEmpty()) {
-			String fileName = uploadFile.getOriginalFilename(); 
-			System.out.println(fileName);
-			uploadFile.transferTo(new File("E:/" + fileName));
-		}
-		
 		boardService.insertBoard(vo); 
 		return "getBoardList.do";
 	}

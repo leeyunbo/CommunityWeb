@@ -14,7 +14,7 @@ public class UserController {
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session) {
 		session.invalidate(); 
-		return "login";
+		return "login.jsp";
 	}
 	
 	@RequestMapping(value = "/login.do", method=RequestMethod.POST)
@@ -28,7 +28,7 @@ public class UserController {
 			session.setAttribute("userName", user.getName());
 			return "getBoardList.do";
 		} else {
-			return "login";
+			return "login.jsp";
 		}	
 	}
 	
@@ -36,6 +36,6 @@ public class UserController {
 	public String loginView(UserVO vo) {
 		vo.setId("test");
 		vo.setPassword("test123");
-		return "login";
+		return "login.jsp";
 	}
 }
