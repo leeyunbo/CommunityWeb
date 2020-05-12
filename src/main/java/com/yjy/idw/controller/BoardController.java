@@ -30,6 +30,11 @@ public class BoardController {
 		return conditionMap;
 	}
 	
+	@RequestMapping("/")
+	public String getHomepage() {
+		return "index";
+	}
+	
 	@RequestMapping("/deleteBoard.do")
 	public String deleteBoard(BoardVO vo) {
 		boardService.deleteBoard(vo);
@@ -48,7 +53,7 @@ public class BoardController {
 		}
 		
 		model.addAttribute("board", boardService.getBoard(vo));
-		return "getBoard.jsp";
+		return "getBoard";
 	}
 	
 	// @RequestParam(value="searchCondition", defaultValue="TITLE",required=false) String condition
@@ -59,7 +64,7 @@ public class BoardController {
 		if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
 		
 		model.addAttribute("boardList", boardService.getBoardList(vo));
-		return "getBoardList.jsp";
+		return "getBoardList";
 	}
 	
 	@RequestMapping(value="/insertBoard.do")
