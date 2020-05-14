@@ -148,6 +148,7 @@ public class BoardDAO {
 		List<CommentVO> commentList = new ArrayList<>(); 
 		try {
 			conn = JDBCUtil.getConnection(); 
+			stmt = conn.prepareStatement(COMMENT_GET_LIST);
 			stmt.setInt(1, vo.getSeq()); 
 			rs = stmt.executeQuery(); 
 			while(rs.next()) {

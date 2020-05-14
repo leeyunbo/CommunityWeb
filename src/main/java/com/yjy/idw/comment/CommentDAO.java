@@ -3,12 +3,12 @@ package com.yjy.idw.comment;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
-import java.util.List;
 
-import com.yjy.idw.board.BoardVO;
+import org.springframework.stereotype.Repository;
+
 import com.yjy.idw.common.JDBCUtil;
 
+@Repository("commentDAO")
 public class CommentDAO {
 	
 	// JDBC 관련 변수 

@@ -13,8 +13,8 @@ import com.yjy.idw.comment.CommentVO;
 
 @Controller
 public class CommentController {
-	@Autowired 
-	CommentService service;
+	@Autowired(required=true) 
+	private CommentService service;
 	
 	/**
 	 * comment 추가 후, getBoard.jsp로 이동 

@@ -53,7 +53,6 @@
 <hr>
 
 <!-- 댓글 작성 -->
-<table>
 <form action="insertComment.do">
 <input name="board_seq" type="hidden" value="${board.seq }"/>
 <table border="1" cellpadding="0" cellspacing="0" width="700">
@@ -62,20 +61,22 @@
 		<td align="left"><textarea name="writer" cols="10" rows="1"></textarea></td>
 		<td bgcolor="orange">내용</td>
 		<td align="left"><textarea name="content" cols="40" rows="3"></textarea></td>
+		<td><input type="submit" value="댓글 등록"/></td>
 	</tr>
 </table>
 </form> 
 
 <!-- 댓글 정보 -->
 <c:forEach items="${commentList }" var="comment">
+<table>
 <tr>
 	<td>${comment.writer }</td> 
 	<td>${comment.content }</td>
 	<td>${comment.regDate }</td>
-	<td><a href="deleteComment.do?seq=${comment.seq }?board_seq=${comment.board_seq}">제거</a></td>
+	<td><a href="deleteComment.do?seq=${comment.seq }&board_seq=${comment.board_seq}">제거</a></td>
 </tr>
-</c:forEach>
 </table>
+</c:forEach>
 </center>
 
 </body>

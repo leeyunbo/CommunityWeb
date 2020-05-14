@@ -1,7 +1,9 @@
 package com.yjy.idw.comment;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service("commentService")
 public class CommentServiceImpl implements CommentService {
 	@Autowired 
 	CommentDAO commentDAO;
