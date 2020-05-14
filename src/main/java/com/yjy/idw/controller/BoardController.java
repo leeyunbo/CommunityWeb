@@ -43,8 +43,13 @@ public class BoardController {
 	  
 	@RequestMapping("/getBoard.do")
 	public String getBoard(BoardVO vo, Model model) {
-		model.addAttribute("board", boardService.getBoard(vo));
-		model.addAttribute("commentList", boardService.getCommentList(vo));
+		if(vo == null) {
+			
+		}
+		else {
+			model.addAttribute("board", boardService.getBoard(vo));
+			model.addAttribute("commentList", boardService.getCommentList(vo));
+		}
 		return "getBoard.jsp";
 	}
 	

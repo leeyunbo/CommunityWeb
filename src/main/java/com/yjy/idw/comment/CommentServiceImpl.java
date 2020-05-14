@@ -1,17 +1,19 @@
 package com.yjy.idw.comment;
 
-public class CommentServiceImpl implements CommentService {
+import org.springframework.beans.factory.annotation.Autowired;
 
+public class CommentServiceImpl implements CommentService {
+	@Autowired 
+	CommentDAO commentDAO;
+	
 	@Override
 	public void insertComment(CommentVO vo) {
-		// TODO Auto-generated method stub
-		
+		commentDAO.insertComment(vo);
 	}
 
 	@Override
 	public void deleteComment(CommentVO vo) {
-		// TODO Auto-generated method stub
-		
+		commentDAO.deleteComment(vo);
 	}
 
 }
