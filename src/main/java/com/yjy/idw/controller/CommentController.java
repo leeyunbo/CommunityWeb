@@ -13,7 +13,7 @@ import com.yjy.idw.comment.CommentVO;
 
 @Controller
 public class CommentController {
-	@Autowired(required=true) 
+	@Autowired(required=true)
 	private CommentService service;
 	
 	/**
