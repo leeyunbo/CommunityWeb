@@ -71,6 +71,16 @@ public class CommentDAO {
 	
 	//댓글 삭제 
 	public void deleteComment(CommentVO vo) {
-		
+		System.out.println("===> JDBC로 deleteComment() 기능 처리"); 
+		try {
+			conn = JDBCUtil.getConnection(); 
+			stmt = conn.prepareStatement(COMMENT_DELETE); 
+			stmt.setInt(1, vo.getSeq()); 
+			stmt.executeUpdate(); 
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			JDBCUtil.close(stmt, conn);
+		}
 	}
 }
