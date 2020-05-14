@@ -46,4 +46,8 @@ public class CommentVO {
 	public void setBoard_seq(int board_seq) {
 		this.board_seq = board_seq;
 	}
+	@Override 
+	public String toString() {
+		return "[" + seq + "," + board_seq + "," + content + "," + writer + "]";
+	}
 }

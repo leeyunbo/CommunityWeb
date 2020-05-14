@@ -73,7 +73,11 @@
 	<td>${comment.writer }</td> 
 	<td>${comment.content }</td>
 	<td>${comment.regDate }</td>
-	<td><a href="deleteComment.do?seq=${comment.seq }&board_seq=${comment.board_seq}">제거</a></td>
+	<form action="deleteComment.do">
+	<input name="board_seq" type="hidden" value="${board.seq }"/>
+	<input name="seq" type="hidden" value="${comment.seq }"/>
+	<td><input type="submit" value="제거"/></td>
+	</form>
 </tr>
 </table>
 </c:forEach>

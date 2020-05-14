@@ -26,10 +26,10 @@ public class CommentController {
 	@RequestMapping("/insertComment.do") 
 	public String insertComment(CommentVO commentVO, HttpServletRequest request) {
 		service.insertComment(commentVO);
-		BoardVO boardVO = new BoardVO(); 
-		boardVO.setSeq(commentVO.getBoard_seq());
-		request.setAttribute("board", boardVO);
-		return "forward:/getBoard.do";
+		BoardVO vo = new BoardVO(); 
+		vo.setSeq(commentVO.getBoard_seq());
+		request.setAttribute("board", vo);
+		return "getBoard.do";
 	}
 	
 	/**
@@ -40,12 +40,12 @@ public class CommentController {
 	 */
 	
 	@RequestMapping("/deleteComment.do")
-	public String deleteComment(CommentVO vo, HttpServletRequest request) {
-		service.deleteComment(vo);
-		BoardVO boardVO = new BoardVO(); 
-		boardVO.setSeq(vo.getBoard_seq());
-		request.setAttribute("board", boardVO);
-		return "forward:/getBoard.do";
+	public String deleteComment(CommentVO commentVO, HttpServletRequest request) {
+		service.deleteComment(commentVO);
+		BoardVO vo = new BoardVO(); 
+		vo.setSeq(commentVO.getBoard_seq());
+		request.setAttribute("board", vo);
+		return "getBoard.do";
 	}
 	
 	

@@ -43,10 +43,10 @@ public class BoardController {
 	  
 	@RequestMapping("/getBoard.do")
 	public String getBoard(BoardVO vo, Model model, HttpServletRequest request) {
-		if(vo == null) vo = (BoardVO) request.getAttribute("board");
+		if(request.getAttribute("board") != null) vo = (BoardVO) request.getAttribute("board");
+		
 		model.addAttribute("board", boardService.getBoard(vo));
 		model.addAttribute("commentList", boardService.getCommentList(vo));
-		
 		return "getBoard.jsp";
 	}
 	
