@@ -3,6 +3,7 @@ package com.yjy.idw.board;
 
 import java.util.List;
 import com.yjy.idw.board.BoardVO;
+import com.yjy.idw.comment.CommentVO;
 
 public interface BoardService {
 
@@ -19,5 +20,7 @@ public interface BoardService {
 
 
 	List<BoardVO> getBoardList(BoardVO vo);
+	
+	List<CommentVO> getCommentList(BoardVO vo);
 
 }

@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.yjy.idw.comment.CommentVO;
 import com.yjy.idw.common.JDBCUtil;
 
 

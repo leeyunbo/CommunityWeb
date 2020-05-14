@@ -5,10 +5,16 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.yjy.idw.comment.CommentDAO;
+import com.yjy.idw.comment.CommentVO;
+
 @Service("boardService")
 public class BoardServiceImpl implements BoardService {
 	@Autowired 
 	private BoardDAO boardDAO;
+	
+	@Autowired 
+	private CommentDAO commentDAO;
 	
 	@Override
 	public void insertBoard(BoardVO vo) {
@@ -33,6 +39,11 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public List<BoardVO> getBoardList(BoardVO vo) {
 		return boardDAO.getBoardList(vo);
+	}
+
+	@Override
+	public List<CommentVO> getCommentList(BoardVO vo) {
+		return commentDAO.getCommentList(vo);
 	}
 
 }
