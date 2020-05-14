@@ -8,7 +8,12 @@ public class CommentController {
 	
 	@RequestMapping("/insertComment.do") 
 	public String insertComment(CommentVO vo) {
-		
+		return "getBoard.do";
+	}
+	
+	@RequestMapping("/deleteComment.do")
+	public String deleteComment(CommentVO vo) {
+		return "getBoard.do";
 	}
 	
 	

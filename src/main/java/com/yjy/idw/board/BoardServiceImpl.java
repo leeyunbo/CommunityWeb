@@ -13,9 +13,6 @@ public class BoardServiceImpl implements BoardService {
 	@Autowired 
 	private BoardDAO boardDAO;
 	
-	@Autowired 
-	private CommentDAO commentDAO;
-	
 	@Override
 	public void insertBoard(BoardVO vo) {
 		boardDAO.insertBoard(vo);
@@ -43,7 +40,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public List<CommentVO> getCommentList(BoardVO vo) {
-		return commentDAO.getCommentList(vo);
+		return boardDAO.getCommentList(vo);
 	}
 
 }
