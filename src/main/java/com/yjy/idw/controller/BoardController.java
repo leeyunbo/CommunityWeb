@@ -1,10 +1,11 @@
 package com.yjy.idw.controller;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.yjy.idw.board.BoardService;
 import com.yjy.idw.board.BoardVO;
@@ -42,14 +42,11 @@ public class BoardController {
 	}
 	  
 	@RequestMapping("/getBoard.do")
-	public String getBoard(BoardVO vo, Model model) {
-		if(vo == null) {
-			
-		}
-		else {
-			model.addAttribute("board", boardService.getBoard(vo));
-			model.addAttribute("commentList", boardService.getCommentList(vo));
-		}
+	public String getBoard(BoardVO vo, Model model, HttpServletRequest request) {
+		if(vo == null) vo = (BoardVO) request.getAttribute("board");
+		model.addAttribute("board", boardService.getBoard(vo));
+		model.addAttribute("commentList", boardService.getCommentList(vo));
+		
 		return "getBoard.jsp";
 	}
 	
