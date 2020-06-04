@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.yjy.idw.board.BoardService;
 import com.yjy.idw.board.BoardVO;
+import com.yjy.idw.board.PageVO;
 
 @Controller
 public class BoardController {
@@ -53,11 +54,17 @@ public class BoardController {
 	// @RequestParam(value="searchCondition", defaultValue="TITLE",required=false) String condition
 	// @RequestParam(value="searchKeyword", defaultValue="",required=false) String keyword
 	@RequestMapping("/getBoardList.do")
-	public String getBoardList(BoardVO vo, Model model) {
+	public String getBoardList(BoardVO vo, PageVO page, Model model) {
 		if(vo.getSearchCondition() == null) vo.setSearchCondition("TITLE");
 		if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
+		if(page == null) page.setCurrentPage(1);
 		
-		model.addAttribute("boardList", boardService.getBoardList(vo));
+		List<BoardVO> boardList = boardService.getBoardList(vo);
+		page.setPageCnt(boardList.size()/10);
+		page.setBoardStartIndex((page.getCurrentPage()-1) * 10);
+		
+		model.addAttribute("page", page);
+		model.addAttribute("boardList", boardList);
 		return "getBoardList.jsp";
 	}
 	
