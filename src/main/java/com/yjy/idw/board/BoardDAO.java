@@ -108,6 +108,7 @@ public class BoardDAO {
 		} finally {
 			JDBCUtil.close(rs, stmt, conn); 
 		}
+		
 		return board; 
 	}
 
