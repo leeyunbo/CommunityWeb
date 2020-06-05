@@ -1,5 +1,5 @@
-# SpringBootPractice
-SpringBoot 학습을 위한 레포지토리
+# Communication Web
+SpringBoot 학습을 위한 커뮤니케이션 웹 개발 프로젝트
 
 ### 레포지토리 소개
 ```
