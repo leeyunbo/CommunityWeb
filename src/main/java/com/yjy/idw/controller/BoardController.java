@@ -66,11 +66,16 @@ public class BoardController {
 		
 		List<BoardVO> boardList = boardService.getBoardList(vo);
 		boardListSize = boardList.size();
-		page.setPageCnt(boardListSize/10);
-		page.setBoardStartIndex((page.getCurrentPage()-1) * 10);
 		
+		// 총 페이지 갯수를 구함
+		page.setPageCnt(boardListSize);
+		
+		// BoardList 시작 Index를 구함
+		page.setBoardStartIndex((page.getCurrentPage()-1) * 10);
 		if(page.getBoardStartIndex() + 10 > boardListSize) boardLastIndex = boardListSize;
 		else boardLastIndex = page.getBoardStartIndex() + 10;
+		
+		System.out.println(page.getPageCnt());
 		
 		model.addAttribute("page", page);
 		model.addAttribute("boardList", boardList.subList(page.getBoardStartIndex(), boardLastIndex));

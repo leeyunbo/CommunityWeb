@@ -57,11 +57,25 @@
 <br>
 
 <!-- 게시판 페이지 -->
-이전 
+<c:choose>
+<c:when test="${0 < page.viewFirstPageNumber-5 }">
+<a href="getBoardList.do?currentPage=${page.viewFirstPageNumber-5}&&viewFirstPageNumber=${page.viewFirstPageNumber-5}">이전</a>
+</c:when>
+</c:choose>
+
 <c:forEach var="x" begin="0" end="4" step="1">
-<a href="getBoardList.do?currentPage=${page.viewFirstPageNumber + x}&&viewFirstPageNumber=${page.viewFirstPageNumber}">${page.viewFirstPageNumber + x }</a>
+<c:choose>
+	<c:when test="${page.pageCnt >= page.viewFirstPageNumber + x}">
+		<a href="getBoardList.do?currentPage=${page.viewFirstPageNumber + x}&&viewFirstPageNumber=${page.viewFirstPageNumber}">${page.viewFirstPageNumber + x }</a>
+	</c:when>
+</c:choose>
 </c:forEach>
-다음
+
+<c:choose>
+<c:when test="${page.pageCnt >= page.viewFirstPageNumber+5 }">
+<a href="getBoardList.do?currentPage=${page.viewFirstPageNumber+5}&&viewFirstPageNumber=${page.viewFirstPageNumber+5}">다음</a>
+</c:when>
+</c:choose>
 </center>
 </body>
 </html>

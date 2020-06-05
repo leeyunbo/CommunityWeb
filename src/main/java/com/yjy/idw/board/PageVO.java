@@ -1,6 +1,7 @@
 package com.yjy.idw.board;
 
 public class PageVO {
+	
 	private int currentPage; 
 	private int pageCnt;
 	private int viewFirstPageNumber;
