@@ -59,7 +59,7 @@
 <!-- 게시판 페이지 -->
 이전 
 <c:forEach var="x" begin="0" end="4" step="1">
-${page.viewFirstPageNumber + x }
+<a href="getBoardList.do?currentPage=${page.viewFirstPageNumber + x}&&viewFirstPageNumber=${page.viewFirstPageNumber}">${page.viewFirstPageNumber + x }</a>
 </c:forEach>
 다음
 </center>

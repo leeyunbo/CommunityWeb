@@ -55,6 +55,8 @@ public class BoardController {
 	// @RequestParam(value="searchKeyword", defaultValue="",required=false) String keyword
 	@RequestMapping("/getBoardList.do")
 	public String getBoardList(BoardVO vo, PageVO page, Model model) {
+		int boardLastIndex = 0, boardListSize = 0;
+			
 		if(vo.getSearchCondition() == null) vo.setSearchCondition("TITLE");
 		if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
 		if(page.getCurrentPage() < 1) {
@@ -63,11 +65,15 @@ public class BoardController {
 		}
 		
 		List<BoardVO> boardList = boardService.getBoardList(vo);
-		page.setPageCnt(boardList.size()/10);
+		boardListSize = boardList.size();
+		page.setPageCnt(boardListSize/10);
 		page.setBoardStartIndex((page.getCurrentPage()-1) * 10);
 		
+		if(page.getBoardStartIndex() + 10 > boardListSize) boardLastIndex = boardListSize;
+		else boardLastIndex = page.getBoardStartIndex() + 10;
+		
 		model.addAttribute("page", page);
-		model.addAttribute("boardList", boardList.subList(page.getBoardStartIndex(), page.getBoardStartIndex()+10));
+		model.addAttribute("boardList", boardList.subList(page.getBoardStartIndex(), boardLastIndex));
 		return "getBoardList";
 	}
 	
