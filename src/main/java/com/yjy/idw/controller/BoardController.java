@@ -33,7 +33,7 @@ public class BoardController {
 	
 	@RequestMapping("/")
 	public String getHomepage() {
-		return "index.jsp";
+		return "index";
 	}
 	
 	@RequestMapping("/deleteBoard.do")
@@ -48,7 +48,7 @@ public class BoardController {
 		
 		model.addAttribute("board", boardService.getBoard(vo));
 		model.addAttribute("commentList", boardService.getCommentList(vo));
-		return "getBoard.jsp";
+		return "getBoard";
 	}
 	
 	// @RequestParam(value="searchCondition", defaultValue="TITLE",required=false) String condition
@@ -57,15 +57,18 @@ public class BoardController {
 	public String getBoardList(BoardVO vo, PageVO page, Model model) {
 		if(vo.getSearchCondition() == null) vo.setSearchCondition("TITLE");
 		if(vo.getSearchKeyword() == null) vo.setSearchKeyword("");
-		if(page == null) page.setCurrentPage(1);
+		if(page.getCurrentPage() < 1) {
+			page.setCurrentPage(1);
+			page.setViewFirstPageNumber(1); // 1 ~ 5 출력, 만약 다음을 클릭하면 + 5 할  것  
+		}
 		
 		List<BoardVO> boardList = boardService.getBoardList(vo);
 		page.setPageCnt(boardList.size()/10);
 		page.setBoardStartIndex((page.getCurrentPage()-1) * 10);
 		
 		model.addAttribute("page", page);
-		model.addAttribute("boardList", boardList);
-		return "getBoardList.jsp";
+		model.addAttribute("boardList", boardList.subList(page.getBoardStartIndex(), page.getBoardStartIndex()+10));
+		return "getBoardList";
 	}
 	
 	@RequestMapping(value="/insertBoard.do")

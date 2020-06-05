@@ -29,9 +29,9 @@ public class BoardDAO {
 	private final String BOARD_GET = 
 			"select * from board where seq=?";
 	private final String BOARD_LIST_T = 
-			"select * from board where title like '%'||?||'%' order by seq desc";
+			"select * from board where title like '%'||?||'%' order by seq asc";
 	private final String BOARD_LIST_C =
-			"select * from board where content like '%'||?||'%' order by seq desc";
+			"select * from board where content like '%'||?||'%' order by seq asc";
 	private final String COMMENT_GET_LIST = 
 			"select * from comment where board_seq=?";
 	

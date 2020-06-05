@@ -52,6 +52,16 @@
 </table>
 <br>
 <a href="insertBoard.jsp">새글 등록</a>
+<br>
+<br>
+<br>
+
+<!-- 게시판 페이지 -->
+이전 
+<c:forEach var="x" begin="0" end="4" step="1">
+${page.viewFirstPageNumber + x }
+</c:forEach>
+다음
 </center>
 </body>
 </html>
