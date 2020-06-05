@@ -4,7 +4,9 @@ SpringBoot 학습을 위한 레포지토리
 ### 레포지토리 소개
 ```
 Spring Boot를 활용한 커뮤니케이션 웹 개발 
-DI, AOP를 위한 에노테이션 활용
+DI, AOP를 위한 에노테이션 활용   
+jsp를 활용한 View 구현
+동적인 View 구현을 위한 JSTL 활용
 ```
 
 ### Spring Boot?
