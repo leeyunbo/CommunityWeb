@@ -33,7 +33,7 @@ public class BoardController {
 	
 	@RequestMapping("/")
 	public String getHomepage() {
-		return "index";
+		return "index.jsp";
 	}
 	
 	@RequestMapping("/deleteBoard.do")
@@ -48,7 +48,7 @@ public class BoardController {
 		
 		model.addAttribute("board", boardService.getBoard(vo));
 		model.addAttribute("commentList", boardService.getCommentList(vo));
-		return "getBoard";
+		return "getBoard.jsp";
 	}
 	
 	// @RequestParam(value="searchCondition", defaultValue="TITLE",required=false) String condition
@@ -79,7 +79,7 @@ public class BoardController {
 		
 		model.addAttribute("page", page);
 		model.addAttribute("boardList", boardList.subList(page.getBoardStartIndex(), boardLastIndex));
-		return "getBoardList";
+		return "getBoardList.jsp";
 	}
 	
 	@RequestMapping(value="/insertBoard.do")
