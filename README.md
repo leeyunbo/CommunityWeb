@@ -1,10 +1,12 @@
-# SpringBootPractice
-SpringBoot 학습을 위한 레포지토리
+# Communication Web
+SpringBoot 학습을 위한 커뮤니케이션 웹 개발 프로젝트
 
 ### 레포지토리 소개
 ```
 Spring Boot를 활용한 커뮤니케이션 웹 개발 
-DI, AOP를 위한 에노테이션 활용
+IOC, AOP를 위한 에노테이션 활용   
+jsp를 활용한 View 구현
+동적인 View 구현을 위한 JSTL 활용
 ```
 
 ### Spring Boot?
@@ -31,5 +33,5 @@ DI, AOP를 위한 에노테이션 활용
 2. 게시물 등록, 수정, 삭제 기능
 3. 게시물 검색 기능
 4. 댓글 기능 
-5. 게시 페이지 기능 
+5. 게시물 페이지 기능 
 ```
